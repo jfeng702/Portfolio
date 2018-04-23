@@ -22,7 +22,7 @@
 
 		  gtag('config', 'UA-115467172-1');
 		</script>
-
+	  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 	</head>
 	<body>
 
@@ -223,6 +223,25 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script>
+				let pressed = [];
+				let secret = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight","ArrowLeft", "ArrowRight", "b", "a"];
+				window.addEventListener('keyup', (e) => {
+			    console.log(e);
+			    pressed.push(e.key)
+			    pressed.splice(-secret.length - 1, pressed.length - secret.length);
+
+			    if (pressed.length === secret.length) {
+			      for (let i = 0; i < pressed.length; i++) {
+			        if (pressed[i] !== secret[i]) {
+			          return;
+			        }
+			      }
+			      cornify_add();
+			    }
+			    console.log(pressed);
+			  });
+			</script>
 
 	</body>
 </html>
